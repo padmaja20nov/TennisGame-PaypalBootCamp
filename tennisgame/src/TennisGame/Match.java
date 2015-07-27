@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tennisgame;
+package TennisGame;
 
 import java.util.ArrayList;
 
@@ -11,37 +11,36 @@ public class Match {
     
     private ArrayList<Set> setlist= new ArrayList<Set>();
     private int setMatch[] = new int[2];
-    private int currentMatch;
-    public final int MATCH_THRESOLD = 3;
+    private int currentSet;
+    private final int MATCH_THRESOLD = 3;
+    
     public Match () {
-        currentMatch = 0;
+        currentSet = 0;
         setlist.add(new Set());
     }
     
-    public int processScore(int player) {
-        int winner = setlist.get(player).whoWonSet(player);
+    public int computeScore(int player) {
+        int winner = setlist.get(currentSet).whoWonSet(player);
         if (winner != -1)
         {
             setMatch[winner]++;
             setlist.add(new Set());
-            currentMatch++;
+            currentSet++;
             if( setMatch[winner] >= MATCH_THRESOLD )
             {
                 if(Math.abs(setMatch[0]-setMatch[1]) >= 1) {
                     return winner;
                 }
-            }
-                        
+            }               
         }
-        
         return -1;
     }
     
-    public String getMatch() {
+    public String getMatchScore() {
         String matchstr = setMatch[0]+ " " + setMatch[1];
        
         for(Set str: setlist ) {
-          matchstr += str.getSet() + " ";  
+          matchstr += str.getSetScore() + " ";  
         }
      return matchstr;       
     }

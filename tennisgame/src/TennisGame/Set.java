@@ -30,9 +30,9 @@ public class Set {
 		return -1;
 	}
 	
-	public String getSet () {
+	public String getSetScore () {
 		if (currentGame != -1) {
-			return String.valueOf(setPoint[0]) + " " + String.valueOf(setPoint[1]) + "\n" + gameList.get(currentGame).getGame();
+			return String.valueOf(setPoint[0]) + " " + String.valueOf(setPoint[1]) + "\n" + gameList.get(currentGame).getPoints();
 		} else {
 			return String.valueOf(setPoint[0]) + " " + String.valueOf(setPoint[1]);
 		}

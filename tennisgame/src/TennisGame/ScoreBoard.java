@@ -1,15 +1,22 @@
-package tennisgame;
+package TennisGame;
 
 public class ScoreBoard {
 	
 	Match match;
 	
-	void processScore(String winnerNames){
+	void computeScore(String winnerNames){
 		
-		for(char c:winnerNames.toCharArray()){
-			Match.computeScore(c);
+		for(char c:winnerNames.toCharArray()) {
+			if (c == 'D') {
+				match.computeScore(0);
+			} else {
+				match.computeScore(1);
+			}	
 		}
-		
+	}
+	
+	public String getScore() {
+		return match.getMatchScore();
 	}
 
 }

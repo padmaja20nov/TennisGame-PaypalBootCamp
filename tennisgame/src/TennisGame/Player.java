@@ -3,18 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tennisgame;
+package TennisGame;
 
-/**
- *
- * @author test
- */
 public class Player {
-
    
     private String playerName;
 
-    public void setPlayerName( String name) {
+    public void setPlayerName(String name) {
         playerName = name;
     }
 }
