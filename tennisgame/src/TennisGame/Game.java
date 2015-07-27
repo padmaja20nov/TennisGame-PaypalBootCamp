@@ -1,8 +1,9 @@
-package tennisgame;
+package TennisGame;
 
 public class Game {
+	   
     int points[]=new int[2];
-	int hasPlayerWon(int indexOfPlayer){
+	int whoWonGame(int indexOfPlayer){
 		
 		points[indexOfPlayer]++;
 		
@@ -14,5 +15,9 @@ public class Game {
 		
 	}
 	
+	public String getPoints() {
+		return "";
+		
+	}
 
 }

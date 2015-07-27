@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class Set {
 	
-	private ArrayList<Game> set = new ArrayList<Game>();
+	private ArrayList<Game> gameList = new ArrayList<Game>();
 	private int setPoint[] = new int [2];
 	private int currentGame;
 	
@@ -11,22 +11,31 @@ public class Set {
 	
 	public Set () {
 		currentGame = 0;
-		set.add(new Game());
+		gameList.add(new Game());
 	}
 	
 	public int whoWonSet (int player) {
-		int winner = set.get(currentGame).whoWonGame(player);
+		int winner = gameList.get(currentGame).whoWonGame(player);
 		if (winner != -1) {
 			setPoint[winner]++;
-			set.add(new Game());
+			gameList.add(new Game());
 			currentGame++;
 			if (setPoint[winner] >= SET_THRESHOLD) {
 				if (Math.abs(setPoint[0] - setPoint[1]) == 2) {
+					currentGame = -1;
 					return winner;
 				}
 			}
 		}
 		return -1;
+	}
+	
+	public String getSet () {
+		if (currentGame != -1) {
+			return String.valueOf(setPoint[0]) + " " + String.valueOf(setPoint[1]) + "\n" + gameList.get(currentGame).getGame();
+		} else {
+			return String.valueOf(setPoint[0]) + " " + String.valueOf(setPoint[1]);
+		}
 	}
 	
 }
