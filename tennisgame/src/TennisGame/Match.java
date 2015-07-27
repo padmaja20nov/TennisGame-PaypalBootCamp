@@ -9,21 +9,21 @@ import java.util.ArrayList;
 
 public class Match {
     
-    private ArrayList<Set> matchlist= new ArrayList<Set>();
+    private ArrayList<Set> setlist= new ArrayList<Set>();
     private int setMatch[] = new int[2];
     private int currentMatch;
     public final int MATCH_THRESOLD = 3;
     public Match () {
         currentMatch = 0;
-        matchlist.add(new Set());
+        setlist.add(new Set());
     }
     
-    public int whoWonMatch(int player) {
-        int winner = matchlist.get(player).whoWonSet(player);
+    public int processScore(int player) {
+        int winner = setlist.get(player).whoWonSet(player);
         if (winner != -1)
         {
             setMatch[winner]++;
-            matchlist.add(new Set());
+            setlist.add(new Set());
             currentMatch++;
             if( setMatch[winner] >= MATCH_THRESOLD )
             {
@@ -35,6 +35,15 @@ public class Match {
         }
         
         return -1;
+    }
+    
+    public String getMatch() {
+        String matchstr = setMatch[0]+ " " + setMatch[1];
+       
+        for(Set str: setlist ) {
+          matchstr += str.getSet() + " ";  
+        }
+     return matchstr;       
     }
     
 }
